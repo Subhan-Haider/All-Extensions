@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdShield Pro | Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="settings.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">AdShield Pro</div>
+        <nav>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="whitelist.html" class="nav-item">Whitelisted Sites</a>
+            <a href="filters.html" class="nav-item">Global Filters</a>
+            <a href="#" class="nav-item active">Settings</a>
+        </nav>
+    </div>
+    <main class="content">
+        <header class="top-nav">
+            <h1>Advanced Settings</h1>
+            <p>Configure your neural protection parameters.</p>
+        </header>
+
+        <section class="settings-list">
+            <div class="settings-card">
+                <div class="settings-info">
+                    <h3>Light Theme</h3>
+                    <p>Switch to a bright, high-contrast interface for daytime browsing.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="lightThemeToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="settings-card">
+                <div class="settings-info">
+                    <h3>Stealth Mode (Anti-Adblock Defuser)</h3>
+                    <p>Bypasses "Please disable adblock" popups by spoofing ad properties.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="stealthToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="settings-card">
+                <div class="settings-info">
+                    <h3>Social Media Purge</h3>
+                    <p>Removes "Like" buttons, "Share" widgets, and tracking pixels from social networks.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="socialToggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="settings-card">
+                <div class="settings-info">
+                    <h3>Malware & Phishing Shield</h3>
+                    <p>Blocks access to known harmful domains and malicious script sources.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="malwareToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="settings-card">
+                <div class="settings-info">
+                    <h3>Block Cookie Notices</h3>
+                    <p>Automatically hides annoying "This site uses cookies" banners.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="cookieToggle" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </section>
+    </main>
+
+    <script src="settings.js"></script>
+</body>
+
+</html>

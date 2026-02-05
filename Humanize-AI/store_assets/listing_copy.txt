@@ -1,0 +1,30 @@
+Humanize AI
+
+Summary:
+The simplest way to make AI text sound human.
+
+Description:
+Unleash the power of authentic expression with Humanize AI.
+
+Are you tired of robotic, repetitive, or flagged content? Humanize AI is your ultimate browser companion for transforming AI-generated text into natural, flowing, and undetectable human writing. Whether you're a student, professional writer, or content creator, our advanced neural engine ensures your words resonate with authenticity.
+
+Key Features:
+• Multiple Humanization Modes: Choose from Standard for everyday rewriting, Natural for a conversational tone, or Academic for formal, scholarly output.
+• Anti-Detection Technology: Specifically designed to bypass popular AI detectors like Originality.ai, GPTZero, and Turnitin.
+• Instant Processing: Get human-like results in seconds with our optimized neural backend.
+• Privacy First: Your data is processed securely and never stored longer than necessary.
+• Premium UI: Enjoy a sleek, modern interface with dark mode support, smooth animations, and an intuitive workflow.
+
+How to Use:
+1. Paste your AI-generated text into the input box.
+2. Select your desired mode and intensity.
+3. Click "Execute Humanization."
+4. Copy the polished, human-sounding result!
+
+Elevate your writing today with Humanize AI.
+
+Category:
+Productivity
+
+Language:
+English

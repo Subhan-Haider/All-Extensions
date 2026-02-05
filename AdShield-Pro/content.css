@@ -1,0 +1,69 @@
+/* Content CSS - Hide common ad elements */
+
+/* Generic ad hiding */
+[class*="ad-container"],
+[class*="ad-wrapper"],
+[class*="ad-banner"],
+[class*="ads-"],
+[id*="ad-container"],
+[id*="ad-wrapper"],
+.advertisement,
+.advertising,
+.ad-slot,
+.ad-unit,
+.sponsored-content,
+.sponsored-post {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+/* Google Ads */
+ins.adsbygoogle,
+.adsbygoogle,
+.google-ad,
+.google-ads {
+    display: none !important;
+}
+
+/* Common ad networks */
+iframe[src*="doubleclick"],
+iframe[src*="googlesyndication"],
+iframe[src*="advertising"],
+iframe[src*="ad."],
+iframe[src*="ads."],
+iframe[src*="adserver"] {
+    display: none !important;
+}
+
+/* Social media widgets */
+.fb-like,
+.twitter-share-button,
+.social-share-buttons {
+    display: none !important;
+}
+
+/* Cookie notices */
+.cookie-notice,
+.cookie-banner,
+.cookie-consent,
+[id*="cookie-notice"],
+[id*="cookie-banner"] {
+    display: none !important;
+}
+
+/* Popups and overlays */
+.popup-overlay,
+.modal-overlay,
+[class*="popup-"],
+[class*="modal-ad"] {
+    display: none !important;
+}
+
+/* Prevent body scroll lock from ads */
+body.modal-open,
+body.popup-open {
+    overflow: auto !important;
+}

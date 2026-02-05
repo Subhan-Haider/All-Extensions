@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdShield Pro | Advanced Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <svg width="40" height="40" viewBox="0 0 32 32" fill="none">
+                <path d="M16 2L4 8V14C4 21.18 9.84 27.84 16 29C22.16 27.84 28 21.18 28 14V8L16 2Z"
+                    fill="url(#dash-shield-gradient)" />
+                <defs>
+                    <linearGradient id="dash-shield-gradient" x1="4" y1="2" x2="28" y2="29"
+                        gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#667eea" />
+                        <stop offset="1" stop-color="#764ba2" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            <span>AdShield Pro</span>
+        </div>
+        <nav>
+            <a href="#" class="nav-item active">Overview</a>
+            <a href="whitelist.html" class="nav-item">Whitelisted Sites</a>
+            <a href="settings.html" class="nav-item">Privacy Settings</a>
+            <a href="filters.html" class="nav-item">Global Filters</a>
+        </nav>
+    </div>
+
+    <main class="content">
+        <header class="top-nav">
+            <h1>Protection Dashboard</h1>
+            <div class="user-status">
+                <span class="status-badge">Professional Edition</span>
+            </div>
+        </header>
+
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-title">Total Ads Blocked</div>
+                <div class="metric-value" id="totalAds">--</div>
+                <div class="metric-trend positive">+12% this week</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Trackers Prevented</div>
+                <div class="metric-value" id="totalTrackers">--</div>
+                <div class="metric-trend">Stable</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Data Bandwidth Saved</div>
+                <div class="metric-value" id="totalData">--</div>
+                <div class="metric-trend positive">Lower Latency</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-title">Privacy Score</div>
+                <div class="metric-value">98/100</div>
+                <div class="metric-trend positive">Excellent</div>
+            </div>
+        </section>
+
+        <section class="dashboard-secondary">
+            <div class="chart-container">
+                <div class="card-header">
+                    <h3>Blocking History (Last 7 Days)</h3>
+                </div>
+                <div class="chart-box">
+                    <div class="chart-bars" id="historyChart">
+                        <!-- Bars injected by JS -->
+                    </div>
+                    <div class="chart-labels">
+                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="top-sites-container">
+                <div class="card-header">
+                    <h3>Top Protected Sites</h3>
+                </div>
+                <ul class="site-list" id="siteList">
+                    <li class="site-item">
+                        <span>Loading site data...</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="dash-footer">
+            <p>AdShield Pro v1.1.0 &copy; 2026. Making the web safer and faster.</p>
+        </footer>
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

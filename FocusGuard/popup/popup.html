@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusGuard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <header>
+      <div class="logo">
+        <div class="logo-shield">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+        <span>FocusGuard</span>
+      </div>
+      <button class="icon-btn" id="settings-btn" title="Dashboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+      </button>
+    </header>
+
+    <main>
+      <div class="status-card" id="status-card">
+        <div class="timer-container" id="timer-container" style="display: none;">
+          <svg class="progress-ring" width="120" height="120">
+            <circle class="progress-ring__circle-bg" stroke="currentColor" stroke-width="6" fill="transparent" r="54"
+              cx="60" cy="60" />
+            <circle class="progress-ring__circle" id="progress-circle" stroke="currentColor" stroke-width="6"
+              fill="transparent" r="54" cx="60" cy="60" />
+          </svg>
+          <span class="timer-text" id="timer-display">25:00</span>
+        </div>
+
+        <div class="status-indicator" id="status-indicator">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+
+        <h2 id="status-text">Shield Active</h2>
+        <p id="sites-blocked-count">0 sites blocked</p>
+      </div>
+
+      <div class="controls">
+        <div class="glass-box site-manager">
+          <div class="site-info">
+            <span class="label">Current Site</span>
+            <span class="domain" id="current-domain">vimeo.com</span>
+          </div>
+          <button id="block-btn" class="btn-primary">Block Site</button>
+        </div>
+
+        <div class="glass-box focus-manager">
+          <div class="focus-header">
+            <span class="label">Focus Session</span>
+            <select id="duration-select" class="mini-select">
+              <option value="15">15 min</option>
+              <option value="25" selected>25 min</option>
+              <option value="45">45 min</option>
+              <option value="60">60 min</option>
+            </select>
+          </div>
+          <button id="focus-toggle-btn" class="btn-secondary">Start Focus Session</button>
+        </div>
+
+        <div class="lockdown-row glass-box">
+          <span class="label">Total Lockdown</span>
+          <label class="switch">
+            <input type="checkbox" id="lockdown-toggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="strict-mode-row">
+        <span class="switch-label">Strict Guard</span>
+        <label class="switch">
+          <input type="checkbox" id="strict-mode-toggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
+</html>

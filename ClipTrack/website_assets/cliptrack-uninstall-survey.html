@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClipTrack - Uninstall Survey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #38bdf8;
+            --primary-dark: #0284c7;
+            --bg-dark: #0f172a;
+            --surface: #1e293b;
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(129, 140, 248, 0.1) 0%, transparent 40%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .radio-option:hover {
+            border-color: var(--primary);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .radio-option input {
+            margin-right: 12px;
+            accent-color: var(--primary);
+            width: 18px;
+            height: 18px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: white;
+            font-size: 15px;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        button.submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+
+        button.submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        button.submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .thank-you-msg {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .thank-you-msg h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="surveyContainer">
+        <div class="header">
+            <div class="logo">ClipTrack</div>
+            <h1>We're sorry to see you go.</h1>
+            <p>Your feedback helps us make ClipTrack better for everyone else. Why did you uninstall?</p>
+        </div>
+
+        <form id="feedbackForm" action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+            <!-- Replace 'YOUR_FORM_ID_HERE' with your actual Formspree ID or your own backend endpoint -->
+
+            <div class="form-group">
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="reason" value="bug" required>
+                        It was buggy / didn't work
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="reason" value="not_useful">
+                        I didn't use it enough
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="reason" value="features_missing">
+                        Missing features
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="reason" value="complicated">
+                        Too complicated to use
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="reason" value="other">
+                        Other reason
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Anything else you'd like to share?</label>
+                <textarea name="details" placeholder="Tell us how we can improve..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Send Feedback</button>
+        </form>
+
+        <div class="thank-you-msg" id="thankYouMsg">
+            <h2>Thank You!</h2>
+            <p>We appreciate your honest feedback.</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple frontend handling to show thank you message
+        // If you connect a real backend form (like Formspree, Netlify Forms, etc), 
+        // you can change the <form> action.
+
+        const form = document.getElementById('feedbackForm');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Remove this line if using a real backend action
+
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = 'Sending...';
+            btn.style.opacity = '0.7';
+
+            // Simulate network request
+            setTimeout(() => {
+                document.getElementById('surveyContainer').innerHTML = `
+                    <div class="thank-you-msg" style="display:block">
+                        <div style="font-size: 48px; margin-bottom: 20px;">👋</div>
+                        <h2>Feedback Received</h2>
+                        <p>Thank you for taking the time to help us improve.</p>
+                        <p style="margin-top: 20px; font-size: 14px;">(This is where the user would be redirected or a generic thank you shown)</p>
+                        <a href="https://blizflow.online" style="display: inline-block; margin-top: 30px; color: var(--primary); text-decoration: none;">Return to BlizFlow</a>
+                    </div>
+                `;
+            }, 1000);
+
+            // If strictly creating the HTML file for upload:
+            // 1. Send data to server
+            // 2. Redirect
+        });
+    </script>
+</body>
+
+</html>

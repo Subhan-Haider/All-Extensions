@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusGuard Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="options.css">
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <div class="logo-shield">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <span>FocusGuard</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#stats" class="nav-item active">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 3v18h18" />
+                        <path d="M18 17l-6-6-4 4-5-5" />
+                    </svg>
+                    Statistics
+                </a>
+                <a href="#blocklist" class="nav-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg>
+                    Blocklist
+                </a>
+                <a href="#categories" class="nav-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                    Categories
+                </a>
+                <a href="#keywords" class="nav-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                    Keywords
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <p>v1.0 Pro Edition</p>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <header class="content-header">
+                <h1 id="page-title">Guardian Dashboard</h1>
+                <div class="header-actions">
+                    <label class="whitelist-toggle">
+                        <span>Whitelist Mode</span>
+                        <label class="switch">
+                            <input type="checkbox" id="whitelist-mode-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </label>
+                </div>
+            </header>
+
+            <section id="stats" class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon distractions">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M15 9l-6 6M9 9l6 6" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="distractions-count">0</span>
+                            <span class="stat-label">Distractions Avoided</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon focus">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="focus-minutes">0</span>
+                            <span class="stat-label">Focus Minutes</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="grid-layout">
+                <section id="blocklist" class="dashboard-section card">
+                    <h2 id="managed-header">Sites Guarded</h2>
+                    <div class="add-form">
+                        <input type="text" id="new-site-input" placeholder="Enter domain (e.g. facebook.com)">
+                        <button id="add-site-btn" class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                        </button>
+                    </div>
+                    <ul class="item-list" id="blocked-list">
+                        <!-- Items injected by JS -->
+                    </ul>
+                </section>
+
+                <section id="keywords" class="dashboard-section card">
+                    <h2>Keyword Shield</h2>
+                    <div class="add-form">
+                        <input type="text" id="new-word-input" placeholder="Enter keyword to block...">
+                        <button id="add-word-btn" class="btn-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                        </button>
+                    </div>
+                    <ul class="item-list" id="word-list">
+                        <!-- Items injected by JS -->
+                    </ul>
+                </section>
+            </div>
+
+            <section id="categories" class="dashboard-section card">
+                <h2>Category Defense</h2>
+                <div class="category-grid">
+                    <div class="category-item" data-id="social">
+                        <span class="cat-icon">📱</span>
+                        <span class="cat-name">Social Media</span>
+                    </div>
+                    <div class="category-item" data-id="video">
+                        <span class="cat-icon">🎬</span>
+                        <span class="cat-name">Video & Streaming</span>
+                    </div>
+                    <div class="category-item" data-id="games">
+                        <span class="cat-icon">🎮</span>
+                        <span class="cat-name">Gaming</span>
+                    </div>
+                    <div class="category-item" data-id="news">
+                        <span class="cat-icon">📰</span>
+                        <span class="cat-name">News Sites</span>
+                    </div>
+                    <div class="category-item" data-id="shopping">
+                        <span class="cat-icon">🛍️</span>
+                        <span class="cat-name">Shopping</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-section card">
+                <h2>Guardian Settings</h2>
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <span class="setting-title">Block Resolution</span>
+                            <span class="setting-desc">Choose how distractions are handled</span>
+                        </div>
+                        <select id="block-resolution" class="select-input">
+                            <option value="REDIRECT">Show Block Page</option>
+                            <option value="CLOSE">Close Tab Instantly</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="dashboard-footer">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <div class="logo-shield">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                </svg>
+                            </div>
+                            <span>FocusGuard</span>
+                        </div>
+                        <p class="footer-tagline">Premium Productivity Shield</p>
+                    </div>
+
+                    <div class="footer-links">
+                        <a href="https://github.com/haider-subhan/Site-Blocker" target="_blank" class="footer-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                            </svg>
+                            haider-subhan
+                        </a>
+                        <a href="#" class="footer-link" id="privacy-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                            </svg>
+                            Privacy
+                        </a>
+                        <a href="#" class="footer-link" id="help-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                <line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                            Help
+                        </a>
+                    </div>
+
+                    <div class="footer-info">
+                        <span class="footer-version">v1.0.0</span>
+                        <span class="footer-separator">•</span>
+                        <span class="footer-copyright">© 2026 FocusGuard</span>
+                        <span class="footer-separator">•</span>
+                        <span class="footer-made">Made with 💜</span>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="options.js"></script>
+</body>
+
+</html>

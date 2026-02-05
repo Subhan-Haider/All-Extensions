@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Website Copier",
+  "version": "1.0.0",
+  "description": "Copy entire websites with all assets and export as ZIP file. Works offline-ready.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "storage",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["jszip.min.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["utils/*", "jszip.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
+

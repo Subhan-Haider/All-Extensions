@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdShield Pro</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo-section">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2L4 8V14C4 21.18 9.84 27.84 16 29C22.16 27.84 28 21.18 28 14V8L16 2Z" fill="url(#p-grad)" />
+            <defs>
+              <linearGradient id="p-grad" x1="4" y1="2" x2="28" y2="29" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#8a2be2" />
+                <stop offset="1" stop-color="#4facfe" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>ADSHIELD PRO</h1>
+          <p class="tagline">Neural Protection Active</p>
+        </div>
+      </div>
+      <div class="power-toggle">
+        <label class="switch">
+          <input type="checkbox" id="extensionToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </header>
+
+    <section class="stats-grid">
+      <div class="stat-card">
+        <h3>Ads Deflected</h3>
+        <div class="stat-value" id="adsBlocked">0</div>
+      </div>
+      <div class="stat-card">
+        <h3>Trackers Cut</h3>
+        <div class="stat-value" id="trackersBlocked">0</div>
+      </div>
+      <div class="stat-card full-width">
+        <div>
+          <h3>Data Bandwidth Saved</h3>
+          <div class="stat-value" id="dataSaved">0 MB</div>
+        </div>
+        <div class="stat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22V12m0 0l-4 4m4-4l4 4M5 12a7 7 0 0114 0c0 3.866-3.134 7-7 7s-7-3.134-7-7z" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="current-site-section">
+      <div class="site-name" id="currentSite">Scanning...</div>
+      <div id="siteStatus">
+        <div class="site-status">
+          <span class="status-dot"></span>
+          <span>SYSTEM ENCRYPTED</span>
+        </div>
+      </div>
+      <button class="whitelist-btn" id="whitelistBtn">Authorize Domain</button>
+    </section>
+
+    <section class="actions-section">
+      <button class="action-btn" id="pickerBtn" title="Magic Element Picker">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 3h6v6m-6 6l6 6M3 21l6-6M3 3l6 6" />
+        </svg>
+        <span>Picker</span>
+      </button>
+      <button class="action-btn" id="dashboardBtn" title="Advanced Insights">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 3v18h18M7 16l4-4 4 4 5-5" />
+        </svg>
+        <span>Insights</span>
+      </button>
+      <button class="action-btn" id="filtersBtn" title="Global Filters">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z" />
+        </svg>
+        <span>Filters</span>
+      </button>
+      <button class="action-btn" id="settingsBtn" title="Shield Settings">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+          <path
+            d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+        </svg>
+        <span>Settings</span>
+      </button>
+    </section>
+
+    <footer class="footer">
+      DEPLOYED V1.1.0 • SHIELD STATUS: FULL
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

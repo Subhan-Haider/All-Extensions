@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Logo Renderer</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: transparent;
+            /* For transparency if possible */
+            overflow: hidden;
+        }
+
+        #logo-container {
+            width: 512px;
+            height: 512px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0f1115;
+            /* Matching background if not transparent */
+            border-radius: 120px;
+        }
+
+        svg {
+            width: 350px;
+            height: 350px;
+            filter: drop-shadow(0 0 30px rgba(99, 102, 241, 0.4));
+        }
+    </style>
+</head>
+
+<body>
+    <div id="logo-container">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" fill="url(#shieldGradient)"
+                stroke="#6366f1" stroke-width="0.5" />
+            <path d="M9 11L11 13L15 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <defs>
+                <linearGradient id="shieldGradient" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#818cf8" />
+                    <stop offset="100%" stop-color="#4f46e5" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+</body>
+
+</html>

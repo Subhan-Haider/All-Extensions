@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanize AI - Promo Assets</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #05070a;
+            --surface-color: rgba(255, 255, 255, 0.03);
+            --surface-border: rgba(255, 255, 255, 0.1);
+            --accent-color: #00f2ff;
+            --accent-glow: rgba(0, 242, 255, 0.4);
+            --text-primary: #f0f2f5;
+            --text-secondary: #94a3b8;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem;
+            margin: 0;
+        }
+
+        .asset-label {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            color: #888;
+        }
+
+        /* Shared Styles */
+        .promo-container {
+            background-color: var(--bg-color);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .promo-container::before {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at 50% 0%, var(--accent-glow) 0%, transparent 40%);
+            top: -50%;
+            left: -25%;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+        }
+
+        /* Branding Elements */
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            z-index: 10;
+        }
+
+        .logo-box {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--accent-color);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            box-shadow: 0 0 30px var(--accent-glow);
+            backdrop-filter: blur(10px);
+        }
+
+        .brand-text h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            line-height: 1;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .brand-text p {
+            margin: 0.5rem 0 0;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Asset 1: Small Promo Tile (440x280) */
+        #small-promo {
+            width: 440px;
+            height: 280px;
+        }
+
+        #small-promo .brand-wrapper {
+            flex-direction: column;
+            gap: 1rem;
+            text-align: center;
+        }
+
+        #small-promo .logo-box {
+            width: 60px;
+            height: 60px;
+            font-size: 2rem;
+        }
+
+        #small-promo h1 {
+            font-size: 2rem;
+        }
+
+        #small-promo p {
+            font-size: 0.8rem;
+        }
+
+        /* Asset 2: Marquee Promo Tile (1400x560) */
+        #marquee-promo {
+            width: 1400px;
+            height: 560px;
+            /* layout for marquee */
+            justify-content: space-between;
+            padding: 0 6rem;
+        }
+
+        .marquee-left {
+            z-index: 10;
+        }
+
+        .marquee-left .logo-box {
+            width: 100px;
+            height: 100px;
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .marquee-left h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .marquee-left p {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+        }
+
+        .marquee-right {
+            z-index: 10;
+            width: 50%;
+            height: 70%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--surface-border);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            position: relative;
+            transform: perspective(1000px) rotateY(-10deg) rotateX(5deg);
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .marquee-right::after {
+            content: "ORIGINALITY.AI: 100% HUMAN";
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid #00ff88;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .code-line {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .code-line.short {
+            width: 60%;
+        }
+
+        .code-line.medium {
+            width: 80%;
+        }
+
+        .code-line.active {
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+            opacity: 0.5;
+        }
+
+        .btn-download {
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div class="asset-label">Small Promo Tile (440x280)</div>
+        <div id="small-promo" class="promo-container">
+            <div class="grid-overlay"></div>
+            <div class="brand-wrapper">
+                <div class="logo-box">
+                    <i class="fa-solid fa-robot"></i> <!-- Using FontAwesome instead of image for safety -->
+                </div>
+                <div class="brand-text">
+                    <h1>Humanize AI</h1>
+                    <p>Undetectable &amp; Authentic</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="asset-label">Marquee Promo Tile (1400x560)</div>
+        <div id="marquee-promo" class="promo-container">
+            <div class="grid-overlay"></div>
+
+            <div class="marquee-left">
+                <div class="logo-box">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Humanize <br> <span style="color: var(--accent-color)">Everything</span></h1>
+                    <p>The Ultimate AI Text Humanizer</p>
+                </div>
+            </div>
+
+            <div class="marquee-right">
+                <!-- Abstract UI representation -->
+                <div style="display:flex; gap:10px; margin-bottom: 2rem;">
+                    <div style="width:15px; height:15px; background:rgba(255,59,48,0.5); border-radius:50%"></div>
+                    <div style="width:15px; height:15px; background:rgba(255,149,0,0.5); border-radius:50%"></div>
+                    <div style="width:15px; height:15px; background:rgba(52,199,89,0.5); border-radius:50%"></div>
+                </div>
+
+                <div class="code-line"></div>
+                <div class="code-line medium"></div>
+                <div class="code-line short"></div>
+                <br>
+                <div class="code-line active"></div>
+                <div class="code-line"></div>
+                <div class="code-line medium"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

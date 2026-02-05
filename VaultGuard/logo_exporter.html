@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaultGuard - Logo Exporter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f1115;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: #161b22;
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-preview {
+            width: 256px;
+            height: 256px;
+            background: #0d1117;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 64px;
+            margin-bottom: 30px;
+            border: 2px solid #6366f1;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+        }
+
+        svg {
+            width: 160px;
+            height: 160px;
+            filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.5));
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        p {
+            color: #9ca3af;
+            margin-bottom: 30px;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: #6366f1;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+        }
+
+        button.secondary {
+            background: #21262d;
+            border: 1px solid #30363d;
+        }
+
+        canvas {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="logo-preview" id="logo-render">
+            <svg id="svg-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" fill="url(#grad)" stroke="#6366f1"
+                    stroke-width="0.5" />
+                <path d="M9 11L11 13L15 9" stroke="white" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <defs>
+                    <linearGradient id="grad" x1="12" y1="2" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#818cf8" />
+                        <stop offset="100%" stop-color="#4f46e5" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <h1>VaultGuard Logo</h1>
+        <p>Premium 512x512 Master Asset</p>
+
+        <div class="controls">
+            <button onclick="downloadPNG(512)">Download PNG</button>
+            <button class="secondary" onclick="copySVG()">Copy SVG Code</button>
+        </div>
+    </div>
+
+    <canvas id="export-canvas" width="512" height="512"></canvas>
+
+    <script>
+        function downloadPNG(size) {
+            const canvas = document.getElementById('export-canvas');
+            const ctx = canvas.getContext('2d');
+            const svg = document.getElementById('svg-logo');
+
+            // Background
+            ctx.fillStyle = '#0f1115';
+            ctx.beginPath();
+            ctx.roundRect(0, 0, 512, 512, 120);
+            ctx.fill();
+
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const img = new Image();
+            const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(svgBlob);
+
+            img.onload = function () {
+                // Center and scale
+                const margin = 100;
+                ctx.drawImage(img, margin, margin, 512 - (margin * 2), 512 - (margin * 2));
+
+                const pngUrl = canvas.toDataURL("image/png");
+                const downloadLink = document.createElement("a");
+                downloadLink.href = pngUrl;
+                downloadLink.download = "vaultguard_logo.png";
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+                URL.revokeObjectURL(url);
+            };
+            img.src = url;
+        }
+
+        function copySVG() {
+            const svg = document.getElementById('svg-logo').outerHTML;
+            navigator.clipboard.writeText(svg);
+            alert('SVG Code Copied!');
+        }
+    </script>
+</body>
+
+</html>

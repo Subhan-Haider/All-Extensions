@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Copier</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌐 Website Copier</h1>
+      <p class="subtitle">Copy entire websites with all assets</p>
+    </header>
+
+    <div class="url-display">
+      <div class="url-label">Current Page:</div>
+      <div class="url-value" id="currentUrl">Loading...</div>
+    </div>
+
+    <div class="controls">
+      <button id="copyBtn" class="btn btn-primary">
+        <span class="btn-icon">📥</span>
+        Copy Website
+      </button>
+      <button id="stopBtn" class="btn btn-secondary" style="display: none;">
+        <span class="btn-icon">⏹️</span>
+        Stop
+      </button>
+    </div>
+
+    <div class="mode-selector">
+      <label>
+        <input type="radio" name="mode" value="full" checked>
+        <span>Full Website (All Pages)</span>
+      </label>
+      <label>
+        <input type="radio" name="mode" value="page">
+        <span>Current Page Only</span>
+      </label>
+      <label>
+        <input type="radio" name="mode" value="assets">
+        <span>Assets Only</span>
+      </label>
+    </div>
+
+    <div id="progressSection" class="progress-section" style="display: none;">
+      <div class="progress-header">
+        <h3>Download Progress</h3>
+        <span id="statusBadge" class="status-badge">🟡 Processing</span>
+      </div>
+
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text" id="progressText">0%</div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-label">Files</div>
+          <div class="stat-value">
+            <span id="downloadedCount">0</span> / <span id="totalCount">0</span>
+          </div>
+        </div>
+        <div class="stat-item" id="pagesStat" style="display: none;">
+          <div class="stat-label">Pages</div>
+          <div class="stat-value">
+            <span id="pagesCrawled">0</span> / <span id="pagesTotal">0</span>
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Size</div>
+          <div class="stat-value" id="sizeValue">0 MB</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Time</div>
+          <div class="stat-value" id="timeValue">0s</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Failed</div>
+          <div class="stat-value error" id="failedCount">0</div>
+        </div>
+      </div>
+
+      <div class="logs-section">
+        <div class="logs-header">
+          <span>Activity Log</span>
+          <button id="clearLogsBtn" class="btn-small">Clear</button>
+        </div>
+        <div class="logs-content" id="logsContent">
+          <div class="log-item info">Ready to start...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <details>
+        <summary>⚙️ Advanced Settings</summary>
+        <div class="settings-content">
+          <div class="setting-item">
+            <label>
+              Max File Size (MB):
+              <input type="number" id="maxFileSize" value="50" min="1" max="500">
+            </label>
+          </div>
+          <div class="setting-item">
+            <label>
+              Max Concurrent Downloads:
+              <input type="number" id="maxConcurrency" value="5" min="1" max="10">
+            </label>
+          </div>
+          <div class="setting-item">
+            <label>
+              Crawl Depth (for Full Website):
+              <input type="number" id="maxDepth" value="2" min="1" max="5">
+            </label>
+          </div>
+          <div class="setting-item">
+            <label>
+              Max Pages to Crawl:
+              <input type="number" id="maxPages" value="50" min="1" max="200">
+            </label>
+          </div>
+          <div class="setting-item">
+            <label>
+              <input type="checkbox" id="ignoreExternal" checked>
+              Ignore External Domains (CDNs)
+            </label>
+          </div>
+          <div class="setting-item">
+            <label>
+              <input type="checkbox" id="ignoreAnalytics" checked>
+              Ignore Analytics & Tracking
+            </label>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="#" id="testOfflineBtn">🧪 Test Offline</a>
+        <a href="#" id="helpBtn">❓ Help</a>
+      </div>
+      <div class="footer-note">
+        Use only for personal/educational purposes
+      </div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyStream</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header>
+      <div class="logo-section">
+        <div class="logo-icon">SS</div>
+        <h1>StudyStream</h1>
+      </div>
+      <div class="status-indicator">
+        <span class="pulse"></span>
+        <span id="session-status">In Flow</span>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="timer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="tab-icon">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+        <span>Focus</span>
+      </button>
+      <button class="tab-btn" data-tab="tasks">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="tab-icon">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+        </svg>
+        <span>Tasks</span>
+      </button>
+      <button class="tab-btn" data-tab="vault">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="tab-icon">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+        </svg>
+        <span>Vault</span>
+      </button>
+      <button class="tab-btn" data-tab="notes">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="tab-icon">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+        </svg>
+        <span>Notes</span>
+      </button>
+    </nav>
+
+    <!-- Content Sections -->
+    <main class="content-wrapper">
+      <!-- Timer Section -->
+      <section id="timer" class="tab-content active">
+        <div class="timer-display">
+          <svg class="progress-ring" width="200" height="200">
+            <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="transparent"
+              r="90" cx="100" cy="100" />
+            <circle class="progress-ring__circle" stroke="url(#timer-gradient)" stroke-width="8" stroke-linecap="round"
+              fill="transparent" r="90" cx="100" cy="100" />
+            <defs>
+              <linearGradient id="timer-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#a855f7" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="time-readout">
+            <span id="minutes">25</span>:<span id="seconds">00</span>
+          </div>
+        </div>
+        <div class="timer-controls">
+          <button id="start-btn" class="primary-btn">Start Session</button>
+          <button id="reset-btn" class="secondary-btn">Reset</button>
+        </div>
+        <div class="focus-modes">
+          <button class="mode-btn active" data-time="25">Deep Work</button>
+          <button class="mode-btn" data-time="5">Short Break</button>
+          <button class="mode-btn" data-time="15">Long Break</button>
+        </div>
+
+        <!-- Ambient Soundscapes -->
+        <div class="soundscape-control">
+          <span class="label">Ambient Soundscape</span>
+          <div class="sound-options">
+            <button class="sound-btn" data-sound="none" title="None">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <button class="sound-btn" data-sound="rain" title="Rain">🌧️</button>
+            <button class="sound-btn" data-sound="lofi" title="Lofi">☕</button>
+            <button class="sound-btn" data-sound="forest" title="Forest">🌲</button>
+          </div>
+        </div>
+
+        <!-- Flow Stats Summary -->
+        <div class="stats-card">
+          <div class="stat-item">
+            <span class="stat-value" id="stats-sessions">0</span>
+            <span class="stat-label">Sessions</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value" id="stats-minutes">0</span>
+            <span class="stat-label">Mins Focus</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tasks Section -->
+      <section id="tasks" class="tab-content">
+        <div class="section-header">
+          <h3>Assignments</h3>
+          <button id="add-task-btn" class="icon-btn">+</button>
+        </div>
+        <div class="task-list" id="task-container">
+          <!-- Tasks will be injected here -->
+          <div class="empty-state">No pending deadlines. Add one!</div>
+        </div>
+      </section>
+
+      <!-- Vault (Research Clipper) Section -->
+      <section id="vault" class="tab-content">
+        <div class="section-header">
+          <h3>Research Vault</h3>
+          <span class="badge" id="clippings-count">0 items</span>
+        </div>
+        <div class="clippings-list" id="clippings-container">
+          <div class="empty-state">Highlight text on any page and click "Save to StudyStream" to add to your vault.
+          </div>
+        </div>
+      </section>
+
+      <!-- Notes Section -->
+      <section id="notes" class="tab-content">
+        <div class="section-header">
+          <h3>Quick Notes</h3>
+          <span id="save-status" class="save-status">Saved</span>
+        </div>
+        <textarea id="notes-textarea"
+          placeholder="Start typing your study notes here... They're saved automatically!"></textarea>
+      </section>
+    </main>
+
+    <!-- Site Blocker Toggle -->
+    <footer>
+      <div class="shield-toggle">
+        <label class="switch">
+          <input type="checkbox" id="blocker-toggle">
+          <span class="slider round"></span>
+        </label>
+        <div class="shield-info">
+          <span class="shield-label">Academic Shield</span>
+          <span class="shield-status">Blocking distractions</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Task Modal (Hidden by default) -->
+  <div id="task-modal" class="modal">
+    <div class="modal-content">
+      <h3>New Assignment</h3>
+      <input type="text" id="task-input" placeholder="What needs to be done?">
+      <input type="date" id="date-input">
+      <div class="modal-actions">
+        <button id="cancel-task">Cancel</button>
+        <button id="save-task" class="primary-btn">Add Task</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

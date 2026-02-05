@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdShield Pro | Whitelist Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        .whitelist-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 24px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .add-site-box {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .styled-input {
+            flex: 1;
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            color: var(--input-text);
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .styled-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+
+        .btn-add {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .site-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            margin-bottom: 10px;
+            padding: 15px 25px;
+            border-radius: 15px;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .site-card:hover {
+            border-color: rgba(102, 126, 234, 0.4);
+            transform: translateX(5px);
+        }
+
+        .btn-remove {
+            background: rgba(245, 87, 108, 0.1);
+            color: #f5576c;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .btn-remove:hover {
+            background: #f5576c;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">AdShield Pro</div>
+        <nav>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="#" class="nav-item active">Whitelisted Sites</a>
+            <a href="filters.html" class="nav-item">Global Filters</a>
+            <a href="settings.html" class="nav-item">Settings</a>
+        </nav>
+    </div>
+    <main class="content">
+        <header class="top-nav">
+            <h1>Whitelist Manager</h1>
+            <p style="color: var(--text-secondary)">Sites listed here will not have ads or trackers blocked.</p>
+        </header>
+
+        <section class="whitelist-card">
+            <div class="add-site-box">
+                <input type="text" id="siteInput" class="styled-input" placeholder="Enter domain (e.g. example.com)">
+                <button id="addBtn" class="btn-add">Add to Whitelist</button>
+            </div>
+
+            <div id="siteList">
+                <!-- Sites will be listed here -->
+            </div>
+        </section>
+    </main>
+    <script src="whitelist-page.js"></script>
+</body>
+
+</html>

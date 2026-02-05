@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaultGuard - Secure Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" class="primary-color">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <h1>VaultGuard</h1>
+            </div>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" title="Toggle Light/Dark Mode">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="status-badge">Secure</div>
+            </div>
+        </header>
+
+        <main>
+            <nav class="tabs">
+                <button class="tab-btn active" data-tab="passwords">Vault</button>
+                <button class="tab-btn" data-tab="audit">Audit</button>
+                <button class="tab-btn" data-tab="generator">Gen</button>
+                <button class="tab-btn" data-tab="settings">Config</button>
+            </nav>
+
+            <!-- Passwords Tab -->
+            <div id="passwords-tab" class="tab-content active">
+                <div class="search-box">
+                    <input type="text" id="pass-search" placeholder="Search your vault...">
+                    <button id="open-add-modal" class="add-btn" title="Add Entry">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="filter-chips">
+                    <button class="chip active" data-filter="all">All Items</button>
+                    <button class="chip" data-filter="pinned">Pinned</button>
+                    <button class="chip" data-filter="popular">Frequent</button>
+                    <button class="chip" data-filter="weak">Weak</button>
+                    <button class="chip" data-filter="reused">Reused</button>
+                </div>
+                <div id="vault-list" class="scroll-area">
+                    <div class="empty-state">
+                        <p>No passwords saved yet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audit Tab -->
+            <div id="audit-tab" class="tab-content">
+                <div class="audit-header">
+                    <div class="score-circle">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path id="score-path" class="circle" stroke-dasharray="0, 100"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                stroke="var(--primary)" />
+                            <text x="18" y="18" id="score-text" class="percentage">0%</text>
+                        </svg>
+                        <span
+                            style="font-size: 10px; color: var(--text-muted); margin-top: 5px; font-weight: 600;">Vault
+                            Health</span>
+                    </div>
+                </div>
+                <div class="audit-grid">
+                    <div class="audit-card">
+                        <span class="count" id="weak-count">0</span>
+                        <span class="label">Weak</span>
+                    </div>
+                    <div class="audit-card">
+                        <span class="count" id="reused-count">0</span>
+                        <span class="label">Reused</span>
+                    </div>
+                    <div class="audit-card">
+                        <span class="count" id="stale-count">0</span>
+                        <span class="label">Stale</span>
+                    </div>
+                    <div class="audit-card">
+                        <span class="count" id="strong-count">0</span>
+                        <span class="label">Strong</span>
+                    </div>
+                </div>
+
+                <div class="audit-section" style="margin-bottom: 20px;">
+                    <h3
+                        style="font-size: 11px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; margin-top: 16px;">
+                        Strength Distribution</h3>
+                    <div class="strength-dist-bar">
+                        <div id="dist-strong" class="dist-segment" style="background: var(--success); width: 0%"
+                            title="Strong"></div>
+                        <div id="dist-medium" class="dist-segment" style="background: var(--warning); width: 0%"
+                            title="Medium"></div>
+                        <div id="dist-weak" class="dist-segment" style="background: var(--danger); width: 0%"
+                            title="Weak"></div>
+                    </div>
+                </div>
+
+                <div class="breach-header">
+                    <h3>Breach Monitor</h3>
+                    <button id="run-breach-check" class="secondary-btn">Scan Vault</button>
+                </div>
+                <div id="breach-status" class="breach-card">
+                    <div class="status-icon"></div>
+                    <div class="status-info">
+                        <p class="status-title">System Ready</p>
+                        <p class="status-desc">Scan your vault for compromised credentials.</p>
+                    </div>
+                </div>
+                <div id="audit-details" class="scroll-area" style="margin-top: 15px;">
+                    <!-- Audit items -->
+                </div>
+            </div>
+
+            <!-- Generator Tab -->
+            <div id="generator-tab" class="tab-content">
+                <div class="generator-card">
+                    <div class="generated-output">
+                        <input type="text" id="generated-password" readonly value="Click Generate">
+                        <button id="copy-btn" class="icon-btn" title="Copy">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="gen-strength-meter">
+                        <div id="gen-strength-fill" class="fill"></div>
+                    </div>
+                    <div class="settings-group">
+                        <div style="display:flex; justify-content: space-between; margin-bottom: 8px;">
+                            <label>Length</label>
+                            <span id="length-val" style="font-weight: 700; color: var(--primary);">16</span>
+                        </div>
+                        <input type="range" id="pass-length" min="4" max="64" value="16" style="width: 100%;">
+                    </div>
+                    <div class="options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <label><input type="checkbox" id="inc-numbers" checked> Numbers</label>
+                        <label><input type="checkbox" id="inc-symbols" checked> Symbols</label>
+                        <label><input type="checkbox" id="inc-uppercase" checked> Uppercase</label>
+                    </div>
+                    <div style="display:flex; gap: 10px; margin-top: 20px;">
+                        <button id="generate-btn" class="primary-btn">Generate New</button>
+                        <button id="open-history-btn" class="secondary-btn" style="padding: 0 12px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings-tab" class="tab-content">
+                <div class="scroll-area settings-list">
+                    <div class="settings-group">
+                        <h3>Interface</h3>
+                        <div class="setting-item">
+                            <span>Compact Mode</span>
+                            <label class="switch">
+                                <input type="checkbox" id="compact-mode">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>Accent Color</span>
+                            <div class="color-presets">
+                                <button class="color-dot active" data-color="#6366f1"
+                                    style="background: #6366f1;"></button>
+                                <button class="color-dot" data-color="#0ea5e9" style="background: #0ea5e9;"></button>
+                                <button class="color-dot" data-color="#10b981" style="background: #10b981;"></button>
+                                <button class="color-dot" data-color="#f59e0b" style="background: #f59e0b;"></button>
+                                <button class="color-dot" data-color="#ef4444" style="background: #ef4444;"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h3>Security</h3>
+                        <div class="setting-item">
+                            <span>Force HTTPS</span>
+                            <label class="switch">
+                                <input type="checkbox" id="force-https">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span>Auto-Hide Notes</span>
+                            <label class="switch">
+                                <input type="checkbox" id="auto-wipe-notes">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h3>Data Management</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <button id="export-json" class="secondary-btn">Export Backup</button>
+                            <button id="import-json-btn" class="secondary-btn">Import JSON</button>
+                        </div>
+                        <input type="file" id="import-json-file" style="display:none" accept=".json">
+                        <button class="danger-btn" id="clear-vault">Wipe All Vault Data</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <p>&copy; 2026 VaultGuard &bull; End-to-End Encrypted</p>
+            <a href="https://github.com/haider-subhan" target="_blank" class="github-badge">
+                <span id="github-icon-footer"></span>
+                <span>haider-subhan</span>
+            </a>
+        </footer>
+    </div>
+
+    <!-- Modals -->
+    <div id="add-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Vault Entry</h2>
+                <button id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="new-domain" placeholder="Domain (google.com)">
+                <input type="text" id="new-username" placeholder="Email or Username">
+                <input type="password" id="new-password" placeholder="Password">
+                <select id="new-category">
+                    <option value="Personal">Personal</option>
+                    <option value="Work">Work</option>
+                    <option value="Social">Social</option>
+                    <option value="Finance">Finance</option>
+                </select>
+                <textarea id="new-notes" placeholder="Additional Notes..."></textarea>
+                <button id="save-manual" class="primary-btn">Add to Vault</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="qr-modal" class="modal">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h2>Share Credential</h2>
+                <button id="close-qr-modal">&times;</button>
+            </div>
+            <div class="modal-body align-center">
+                <div id="qr-container"
+                    style="background: #fff; padding: 10px; border-radius: 8px; margin-bottom: 12px; display: inline-block;">
+                </div>
+
+                <div class="share-options"
+                    style="width: 100%; text-align: left; padding: 16px; background: var(--bg-panel); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                    <h4
+                        style="font-size: 10px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; letter-spacing: 0.5px; font-weight: 700;">
+                        Include in QR Code</h4>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div class="setting-item">
+                            <span style="font-size: 12px; color: var(--text-main); font-weight: 500;">Website
+                                Domain</span>
+                            <label class="switch">
+                                <input type="checkbox" id="share-domain" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span
+                                style="font-size: 12px; color: var(--text-main); font-weight: 500;">Username/Email</span>
+                            <label class="switch">
+                                <input type="checkbox" id="share-user" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span style="font-size: 12px; color: var(--text-main); font-weight: 500;">Password</span>
+                            <label class="switch">
+                                <input type="checkbox" id="share-pass" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <span style="font-size: 12px; color: var(--text-main); font-weight: 500;">Notes</span>
+                            <label class="switch">
+                                <input type="checkbox" id="share-notes">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="setting-item"
+                            style="margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px;">
+                            <span style="font-size: 11px; color: var(--primary); font-weight: 600;">Share as Web
+                                Link</span>
+                            <label class="switch">
+                                <input type="checkbox" id="share-web-link">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <p
+                    style="font-size: 11px; color: var(--text-muted); margin-top: 15px; background: var(--bg-panel); padding: 6px 12px; border-radius: 20px;">
+                    Scan to securely transfer to mobile
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="history-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Generation History</h2>
+                <button id="close-history-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="history-list" class="scroll-area" style="max-height: 250px;"></div>
+                <button id="clear-history" class="danger-btn">Clear History</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>Copied to clipboard</span>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

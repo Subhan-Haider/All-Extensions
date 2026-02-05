@@ -1,0 +1,25 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore temporary files
+*.log
+*.tmp
+*~
+
+# Ignore node_modules if you add build tools later
+node_modules/
+
+# Ignore package files
+*.crx
+*.pem
+*.zip
+
+# Ignore OS generated files
+desktop.ini

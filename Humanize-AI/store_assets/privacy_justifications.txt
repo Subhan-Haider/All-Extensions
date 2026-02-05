@@ -1,0 +1,43 @@
+Privacy Justifications & Declarations
+
+Single Purpose Description:
+The single purpose of this extension is to rewrite and humanize AI-generated text directly within the browser sidebar, allowing users to convert robotic content into natural-sounding language without leaving their current workflow.
+
+---------------------------------------------------
+
+Permission Justifications:
+
+1. storage justification:
+Required to save user preferences such as the selected humanization mode (Standard, Natural, Academic), theme settings (Dark/Light), and the user's API key locally on their device. This ensures a persistent and personalized user experience across sessions.
+
+2. sidePanel justification:
+Required to display the extension's main interface in the browser's side panel. This allows users to access the humanization tools alongside their active web pages, enabling multitasking and easy copy-pasting of content.
+
+3. declarativeNetRequest justification:
+Required to modify network requests to the dedicated API endpoint (https://deceptioner.site) to ensure secure and correct communication. It allows the extension to handle API headers efficiently without needing broader host permissions.
+
+4. Host permission justification (https://deceptioner.site/*):
+Required solely to communicate with the extension's backend API (`https://deceptioner.site`) for processing text. The extension sends text input to this specific endpoint for humanization and receives the rewritten result. No other websites or user browsing data are accessed.
+
+---------------------------------------------------
+
+Remote Code:
+No, I am not using Remote code.
+
+---------------------------------------------------
+
+Data Usage Declarations:
+
+What user data do you plan to collect?
+- [X] Authentication information (API Keys are stored locally for access, but processed by the backend).
+- [X] User activity (Text input is sent for processing).
+
+Certifications:
+- [X] I do not sell or transfer user data to third parties, outside of the approved use cases.
+- [X] I do not use or transfer user data for purposes that are unrelated to my item's single purpose.
+- [X] I do not use or transfer user data to determine creditworthiness or for lending purposes.
+
+---------------------------------------------------
+
+Privacy Policy URL:
+https://deceptioner.site/privacy-policy

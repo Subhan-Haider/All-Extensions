@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page for Website Copier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Website Copier Test Page</h1>
+        <p>This is a test page to verify the Website Copier extension works correctly.</p>
+        
+        <div class="test-section">
+            <h2>Test Images</h2>
+            <p>These images should be downloaded by the extension:</p>
+            <img src="https://via.placeholder.com/300x200/667eea/ffffff?text=Test+Image+1" alt="Test Image 1">
+            <img src="https://via.placeholder.com/300x200/764ba2/ffffff?text=Test+Image+2" alt="Test Image 2">
+        </div>
+        
+        <div class="test-section">
+            <h2>Test Buttons</h2>
+            <button onclick="alert('Button clicked!')">Click Me</button>
+            <button onclick="document.body.style.background = 'red'">Change Background</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>External CSS Test</h2>
+            <p>This page uses inline CSS. External CSS files would be downloaded separately.</p>
+        </div>
+        
+        <div class="test-section">
+            <h2>Instructions</h2>
+            <ol>
+                <li>Open this page in your browser</li>
+                <li>Click the Website Copier extension icon</li>
+                <li>Click "Copy Website"</li>
+                <li>Wait for download to complete</li>
+                <li>Extract the ZIP file</li>
+                <li>Open index.html in your browser</li>
+                <li>Verify the page looks the same offline!</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script>
+        console.log("Test page loaded successfully!");
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM ready - extension can capture this state");
+        });
+    </script>
+</body>
+</html>
+

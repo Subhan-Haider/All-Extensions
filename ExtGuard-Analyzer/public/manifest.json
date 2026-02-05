@@ -1,0 +1,18 @@
+{
+    "manifest_version": 3,
+    "name": "ExtGuard Pro",
+    "version": "1.0.0",
+    "description": "Automatically test and audit your browser extensions for errors and security risks.",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": [
+        "storage"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "icons": {
+        "128": "icon128.png"
+    }
+}

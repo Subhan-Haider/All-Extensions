@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VaultGuard - Promo Asset Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-app: #0f1115;
+            --primary: #6366f1;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1c23;
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .asset-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        /* Common Promo Styles */
+        .promo-tile {
+            background: var(--bg-app);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .promo-tile::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .promo-tile::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.01) 40px, rgba(255, 255, 255, 0.01) 80px);
+            pointer-events: none;
+        }
+
+        .logo-mark {
+            color: var(--primary);
+            filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.4));
+            margin-bottom: 20px;
+            z-index: 2;
+        }
+
+        .brand-name {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin: 0;
+            z-index: 2;
+            background: linear-gradient(135deg, #fff 0%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Small Promo Tile (440x280) */
+        .small-tile {
+            width: 440px;
+            height: 280px;
+        }
+
+        .small-tile .brand-name {
+            font-size: 36px;
+        }
+
+        /* Marquee Promo Tile (1400x560) */
+        .marquee-tile {
+            width: 1400px;
+            height: 560px;
+        }
+
+        .marquee-tile .brand-name {
+            font-size: 96px;
+        }
+
+        .marquee-tile .tagline {
+            font-size: 24px;
+            color: var(--text-muted);
+            margin-top: 15px;
+            z-index: 2;
+            font-weight: 400;
+        }
+
+        .glow-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            filter: blur(150px);
+            opacity: 0.2;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .download-btn {
+            padding: 8px 16px;
+            background: var(--primary);
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="asset-container">
+        <div class="label">Small Promo Tile (440 x 280)</div>
+        <div class="promo-tile small-tile" id="small-tile">
+            <div class="glow-orb" style="top: -100px; left: -100px;"></div>
+            <div class="logo-mark">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+            </div>
+            <h1 class="brand-name">VaultGuard</h1>
+        </div>
+    </div>
+
+    <div class="asset-container" style="width: 100%; display: flex; align-items: center;">
+        <div class="label">Marquee Promo Tile (1400 x 560)</div>
+        <div class="promo-tile marquee-tile" id="marquee-tile">
+            <div class="glow-orb" style="bottom: -150px; right: -150px; opacity: 0.3;"></div>
+            <div class="glow-orb" style="top: -150px; left: -150px; width: 600px; height: 600px; opacity: 0.1;"></div>
+            <div class="logo-mark">
+                <svg width="180" height="180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+            </div>
+            <h1 class="brand-name" style="font-size: 120px;">VaultGuard</h1>
+            <p class="tagline">Premium. Secure. Seamless.</p>
+        </div>
+    </div>
+
+    <p style="color: var(--text-muted); font-size: 12px; margin-top: 50px;">
+        Designed for Chrome Web Store &bull; Take a screenshot of each block above to save your assets.
+    </p>
+
+</body>
+
+</html>

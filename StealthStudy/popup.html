@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StealthStudy</title>
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #0066ff;
+            --bg: #0a0a12;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text: #ffffff;
+            --text-muted: #a0a0b0;
+        }
+
+        body {
+            width: 320px;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 16px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 12px;
+        }
+
+        header img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+        }
+
+        header h1 {
+            font-size: 1.2rem;
+            margin: 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .row:last-child {
+            margin-bottom: 0;
+        }
+
+        .label-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .label-group span:first-child {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .label-group span.desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Toggle Switch */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #333;
+            transition: .4s;
+            border-radius: 22px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--secondary);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(22px);
+            background-color: var(--primary);
+        }
+
+        /* Text Input & Area */
+        input[type="text"],
+        textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 6px;
+            color: white;
+            padding: 8px;
+            font-size: 0.85rem;
+            box-sizing: border-box;
+            margin-top: 8px;
+        }
+
+        textarea {
+            height: 80px;
+            resize: none;
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: var(--bg);
+            border: none;
+            border-radius: 8px;
+            padding: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 4px;
+            transition: transform 0.2s ease;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .status {
+            font-size: 0.7rem;
+            color: var(--primary);
+            text-align: center;
+            margin-top: 4px;
+            height: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="icons/icon48.png" id="logo-img" alt="Logo">
+            <h1>StealthStudy</h1>
+        </header>
+
+        <div class="section">
+            <div class="row">
+                <div class="label-group">
+                    <span>Anti-Detection</span>
+                    <span class="desc">Bypass tab switch tracking</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="antiDetection">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="label-group">
+                    <span>Bypass Caps</span>
+                    <span class="desc">Enable Right-click & Copy</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="bypassRestrictions">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="label-group">
+                    <span>Tab Cloaking</span>
+                    <span class="desc">Disguise as innocent tab</span>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="tabCloak">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <input type="text" id="cloakTitle" placeholder="Google Docs">
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="label-group">
+                    <span>Ghost Overlay</span>
+                    <span class="desc">Floating semi-transparent notes</span>
+                </div>
+                <button id="toggleGhost" style="width: auto; padding: 5px 10px; margin: 0;">Toggle</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="row">
+                <div class="label-group">
+                    <span>Side Search</span>
+                    <span class="desc">Wikipedia side panel</span>
+                </div>
+                <button id="toggleSearch" style="width: auto; padding: 5px 10px; margin: 0;">Toggle</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="label-group">
+                <span>Quick Notes</span>
+                <span class="desc">Private notes for this window</span>
+            </div>
+            <textarea id="notes" placeholder="Paste snippets here..."></textarea>
+            <button id="saveNotes">Save All Settings</button>
+            <button id="clearData" style="background: rgba(255, 0, 0, 0.2); margin-top: 8px;">Clear All Data</button>
+            <div id="status" class="status">Settings saved!</div>
+        </div>
+
+        <div class="footer">
+            Panic Button: <span style="color: var(--primary)">Ctrl + Shift + F</span>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>

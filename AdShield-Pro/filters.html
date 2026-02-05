@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdShield Pro | Global Filters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        .filter-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 24px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .add-filter-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .styled-input {
+            background: var(--input-bg);
+            border: 1px solid var(--border);
+            color: var(--input-text);
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .styled-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-glow);
+        }
+
+        .btn-add {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .filter-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            margin-bottom: 10px;
+            padding: 15px 25px;
+            border-radius: 15px;
+        }
+
+        .filter-pattern {
+            font-family: monospace;
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .btn-remove {
+            background: rgba(245, 87, 108, 0.1);
+            color: #f5576c;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-logo">AdShield Pro</div>
+        <nav>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="whitelist.html" class="nav-item">Whitelisted Sites</a>
+            <a href="#" class="nav-item active">Global Filters</a>
+            <a href="settings.html" class="nav-item">Settings</a>
+        </nav>
+    </div>
+    <main class="content">
+        <header class="top-nav">
+            <h1>Global URL Filters</h1>
+            <p style="color: var(--text-secondary)">Block specific URLs or patterns globally using wildcard syntax.</p>
+        </header>
+
+        <section class="filter-card">
+            <div class="add-filter-box">
+                <input type="text" id="filterInput" class="styled-input"
+                    placeholder="e.g. *analytics-tracker* or ads.example.com">
+                <button id="addFilterBtn" class="btn-add">Block Pattern</button>
+            </div>
+
+            <div id="filterList">
+                <!-- Filters will be listed here -->
+            </div>
+        </section>
+    </main>
+    <script src="filters-page.js"></script>
+</body>
+
+</html>

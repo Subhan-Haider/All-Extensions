@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniSaver</title>
+    <link rel="stylesheet" href="popup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo-area">
+                <img src="icons/icon48.png" alt="UniSaver Logo" class="logo-img">
+                <div>
+                    <h1>UniSaver</h1>
+                    <div id="check-status" style="font-size: 9px; color: var(--text-secondary); margin-top: -2px;">
+                        Checking for deals...</div>
+                </div>
+            </div>
+            <div class="badge">Student</div>
+        </header>
+
+        <main>
+            <!-- Status Section -->
+            <div id="status-container" class="status-container">
+                <div class="checking-state">
+                    <div class="spinner"></div>
+                    <p>Checking for discounts...</p>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="all">All</button>
+                <button class="tab-btn" data-tab="Free">🎁 Free</button>
+                <button class="tab-btn" data-tab="Food">🍔 Food</button>
+                <button class="tab-btn" data-tab="Travel">✈️ Travel</button>
+                <button class="tab-btn" data-tab="Tech">Tech</button>
+                <button class="tab-btn" data-tab="Fashion">Fashion</button>
+                <button class="tab-btn" data-tab="fav">★ Saved</button>
+            </div>
+
+            <!-- Search -->
+            <div class="search-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-input" placeholder="Search stores...">
+            </div>
+
+            <!-- Deals List -->
+            <div id="deals-list" class="deals-list">
+                <!-- Injected by JS -->
+            </div>
+        </main>
+
+        <footer>
+            <button id="view-all-btn">View All Discounts</button>
+            <div style="height: 8px;"></div>
+            <button id="report-btn" style="opacity: 0.6; font-size: 11px;">Report Missing Deal</button>
+        </footer>
+    </div>
+
+    <script src="discounts.js"></script>
+    <script src="popup.js"></script>
+</body>
+
+</html>
